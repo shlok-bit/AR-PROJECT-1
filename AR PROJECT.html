@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title> project AUGMENTED REALITY </title>
+    project
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .demo {
+            height: 100vh;
+            width: 100%
+        }
+
+        .demo model-viewer {
+            width: 100%;
+            height: 100%;
+        }
+
+        .btn-container {
+            position: absolute;
+            bottom: 50px;
+            width: 100px;
+            text-align: center;
+        }
+
+        button {
+            border: none;
+            background: #edda73;
+            height: 40px;
+            width: 150px;
+            margin: 5px 15px;
+            cursor: pointer;
+            font-width: bold;
+            font-size: 16px;
+        }
+
+        button {
+            outline: none;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="demo">
+        <model-viewer id="model"
+            src="https://raw.githubusercontent.com/google/model-viewer/master/packages/shared-assets/models/RobotExpressive.glb"
+            auto-rotate camera-controls animation-name="Idle" autoplay ar></model-viewer>
+        <div class="btn-container">
+            <button onclick="stopidd()">STOP</button>
+            <button onclick="runi()">RUN</button>
+            <button type="button" onclick="wave()">WAVE</button>
+            <!-- <button type="button" onclick="jump()">JUMP</button>
+            <button type="button" onclick="clap()">CLAP</button> -->
+            <button type="button" onclick="clap()">CLAP</button>
+        </div>
+        <script>
+            var modelviewer = document.getElementById('model');
+            console.log(modelviewer)
+            function stopidd() {
+                modelviewer.animationName = 'Idle';
+            }
+            function runi() {
+                modelviewer.animationName = 'Running';
+            }
+            function wave() {
+                modelviewer.animationName = 'Wave'
+            }
+            function clap() {
+                self.setInterval(() => {
+                    modelviewer.animationName = modelviewer.animationName === 'Running' ?
+                        'Wave' : 'Running';
+                }, 1500.0);
+            }
+            // function jump() {
+            //     modelviewer.animationName = 'jump'
+            // }
+            // function clap() {
+            //     modelviewer.animationName = 'clap'
+            // }
+
+        </script>
+
+
+    </div>
+
+</body>
+
+</html>
